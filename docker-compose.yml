@@ -1,0 +1,46 @@
+services:
+  spark-master:
+    container_name: lc-spark-master 
+    build: .
+    image: lc-apache-spark:3.5.5
+    entrypoint: ['./entrypoint.sh','master']
+    healthcheck:
+      test: ["CMD", "curl", "-f","http://localhost:8080"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    volumes:
+      - ./apps:/opt/spark/apps
+      - ./data:/opt/spark/data
+      - spark-logs:/opt/spark/spark-events
+    env_file:
+      - .env.spark
+    ports:
+      - "9090:8080"
+      - "7077:7077"
+  spark-worker:
+    image: lc-apache-spark:3.5.5
+    entrypoint: ['./entrypoint.sh','worker']
+    depends_on:
+      - spark-master
+    volumes:
+      - ./apps:/opt/spark/apps
+      - ./data:/opt/spark/data
+      - spark-logs:/opt/spark/spark-events
+    env_file:
+      - .env.spark
+  spark-history-server:
+    container_name: lc-spark-history
+    image: lc-apache-spark:3.5.5
+    entrypoint: ['./entrypoint.sh','history']
+    depends_on:
+      - spark-master
+    volumes:
+      - spark-logs:/opt/spark/spark-events
+    env_file:
+      - .env.spark
+    ports:
+      - "18080:18080"
+
+volumes:
+  spark-logs:
