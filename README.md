@@ -1,4 +1,4 @@
-# 🚀 LC Apache Spark Lab
+# 🚀 Lumos Code Apache Spark Lab
 
 This repository provides a Docker-based setup for running an Apache Spark cluster with a master node, worker nodes, and a history server. It is designed for learning and experimenting with Apache Spark.
 
@@ -63,8 +63,6 @@ This repository provides a Docker-based setup for running an Apache Spark cluste
 
 
 ## 🧠 Author
->**Name**: Soham Sil 
->
->**LinkedIn**: linkedin.com/in/soham-sil-048127b8 
->
->**Email**: sil.soham@gmail.com
+- **Name**: Soham Sil 
+- **LinkedIn**: linkedin.com/in/soham-sil-048127b8 
+- **Email**: sil.soham@gmail.com
