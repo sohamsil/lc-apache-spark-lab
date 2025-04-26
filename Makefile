@@ -16,5 +16,8 @@ remove:
 run:
 	docker compose up --scale spark-worker=$(worker_count)
 
+submit:
+	docker exec lc-spark-master spark-submit --master spark://spark-master:7077 --deploy-mode client ./apps/$(app)
+
 
 
