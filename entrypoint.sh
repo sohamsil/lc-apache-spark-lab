@@ -13,6 +13,9 @@ then
 elif [ "$SPARK_WORKLOAD" == "history" ];
 then 
     start-history-server.sh
+elif [ "$SPARK_WORKLOAD" == "jupyter" ];
+then 
+    jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=
 else
-    echo "Undefined Workload Type $SPARK_WORKLOAD, must specify: master, worker, history"
+    echo "Undefined Workload Type $SPARK_WORKLOAD, must specify: master, worker, history, jupyter"
 fi
