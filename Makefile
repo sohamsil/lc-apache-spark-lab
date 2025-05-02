@@ -13,8 +13,11 @@ stop:
 remove:
 	docker compose rm
 
-run:
+run-spark-cluster:
 	docker compose up --scale spark-worker=$(worker_count)
+
+run-jupyter:
+	docker compose up jupyter-notebook
 
 submit:
 	docker exec lc-spark-master spark-submit --master spark://spark-master:7077 --deploy-mode client ./apps/$(app)
