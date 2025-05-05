@@ -12,12 +12,14 @@ services:
     volumes:
       - ./apps:/opt/spark/apps
       - ./data:/opt/spark/data
+      - ./notebooks:/opt/spark/notebooks 
       - spark-logs:/opt/spark/spark-events
     env_file:
       - .env.spark
     ports:
       - "9090:8080"
       - "7077:7077"
+      - "8888:8888"
   spark-worker:
     image: lc-apache-spark:3.5.5
     entrypoint: ['./entrypoint.sh','worker']
@@ -41,14 +43,6 @@ services:
       - .env.spark
     ports:
       - "18080:18080"
-  jupyter-notebook:
-    container_name: lc-jupyter-notebook
-    image: lc-apache-spark:3.5.5
-    entrypoint: ['./entrypoint.sh','jupyter']
-    volumes:
-      - ./notebooks:/opt/spark/notebooks
-    ports:
-      - "8888:8888" 
 
 volumes:
   spark-logs:

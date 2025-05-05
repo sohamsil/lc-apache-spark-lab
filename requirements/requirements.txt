@@ -1,5 +1,2 @@
-delta-spark==3.3.1
-deltalake==0.25.5
 jupyterlab==4.4.1
 pandas==2.2.3
-roapi==0.12.4

@@ -38,8 +38,7 @@ SPARK_LOG_DIR=${SPARK_HOME}/logs \
 SPARK_MASTER_LOG=${SPARK_HOME}/logs/spark-master.out \
 SPARK_WORKER_LOG=${SPARK_HOME}/logs/spark-worker.out \
 SPARK_MASTER="spark://spark-master:7077" \
-PYSPARK_PYTHON=python3 \
-DELTA_PACKAGE_VERSION=delta-core_2.12:3.3.1
+PYSPARK_PYTHON=python3
 
 # Copy default configurations in to 
 COPY conf/spark-defaults.conf "${SPARK_HOME}/conf"
